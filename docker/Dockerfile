@@ -71,17 +71,17 @@ RUN apt-get update && apt-get install -y lsb-release &&\
 	apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 &&\
 	apt-get update && apt-get install -y ros-noetic-desktop-full
 ########## ROS setup ##########
-RUN mkdir -p /home/ros_catkin_ws/src && \
-	cd /home/ros_catkin_ws/src && \
+RUN mkdir -p /home/catkin_ws/src && \
+	cd /home/catkin_ws/src && \
 	/bin/bash -c "source /opt/ros/noetic/setup.bash; catkin_init_workspace" && \
-	cd /home/ros_catkin_ws && \
+	cd /home/catkin_ws && \
 	/bin/bash -c "source /opt/ros/noetic/setup.bash; catkin_make" && \
 	echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc && \
-	echo "source /home/ros_catkin_ws/devel/setup.bash" >> ~/.bashrc && \
-	echo "export ROS_PACKAGE_PATH=\${ROS_PACKAGE_PATH}:/home/ros_catkin_ws" >> ~/.bashrc && \
-	echo "export ROS_WORKSPACE=/home/ros_catkin_ws" >> ~/.bashrc
+	echo "source /home/catkin_ws/devel/setup.bash" >> ~/.bashrc && \
+	echo "export ROS_PACKAGE_PATH=\${ROS_PACKAGE_PATH}:/home/catkin_ws" >> ~/.bashrc && \
+	echo "export ROS_WORKSPACE=/home/catkin_ws" >> ~/.bashrc
 ## cmk
-RUN echo "function cmk(){\n	lastpwd=\$OLDPWD \n	cpath=\$(pwd) \n cd /home/ros_catkin_ws \n catkin_make \$@ \n cd \$cpath \n	OLDPWD=\$lastpwd \n}" >> ~/.bashrc
+RUN echo "function cmk(){\n	lastpwd=\$OLDPWD \n	cpath=\$(pwd) \n cd /home/catkin_ws \n catkin_make \$@ \n cd \$cpath \n	OLDPWD=\$lastpwd \n}" >> ~/.bashrc
 ########## dnn_attitude_estimation ##########
 ##### NO cache #####
 ARG CACHEBUST=1
@@ -93,11 +93,11 @@ RUN cd /home && \
     tar -xvf MT_Software_Suite_linux-x86_2021.4.tar.gz && \
     cd MT_Software_Suite_linux-x86_2021.4 && \
     yes " " | ./mtsdk_linux-x86_2021.4.sh && \
-    cp -r /usr/local/xsens/xsens_ros_mti_driver/ /home/ros_catkin_ws/src/ && \
-    cd /home/ros_catkin_ws && \
+    cp -r /usr/local/xsens/xsens_ros_mti_driver/ /home/catkin_ws/src/ && \
+    cd /home/catkin_ws && \
     /bin/bash -c "pushd src/xsens_ros_mti_driver/lib/xspublic; make; popd;"
 
-RUN cd /home/ros_catkin_ws && \
+RUN cd /home/catkin_ws && \
     /bin/bash -c "source /opt/ros/noetic/setup.bash; catkin_make"
 
 ### Realsemse
@@ -122,9 +122,9 @@ RUN mkdir -p /home/log && \
     mkdir -p /home/log/other_test_log && \
     mkdir -p /home/bagfiles
 
-RUN cd /home/ros_catkin_ws/src && \
+RUN cd /home/catkin_ws/src && \
     git clone https://github.com/Hibiki1020/integrated_attitude_estimator.git --recursive && \
-    cd /home/ros_catkin_ws && \
+    cd /home/catkin_ws && \
     /bin/bash -c "source /opt/ros/noetic/setup.bash; catkin_make; source devel/setup.bash"
 
-WORKDIR /home/ros_catkin_ws/
+WORKDIR /home/catkin_ws/

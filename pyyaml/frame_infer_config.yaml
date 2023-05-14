@@ -18,7 +18,7 @@ csv_name: "data_list.csv"
 
 # weights_top_directory: "/home/strage/integrated_attitude_estimator_log/ViT/train_log_TimeSformer_finetune_2023_01_11_8frame/train_log/"
 # weights_file_name: "weights.pth"
-weights_top_directory: "/home/amsl/integrated_attitude_estimator/weights/"
+weights_top_directory: "/home/amsl/catkin_ws/src/integrated_attitude_estimator/weights/"
 # weights_file_name: "weights_2023_01_04_TimeSformer_finetune_4frame.pth"
 # weights_file_name: "weights_2023_02_02_TimeSformer_pretrain_8frame_for_IROS.pth"
 weights_file_name: "weights_2023_01_07_TimeSformer_pretrain_8frame.pth"
@@ -35,7 +35,7 @@ yaml_name: "infer_config_seq4_25hz.yaml"
 
 index_dict_name: "index_dict_-30_30_range_step1deg.csv"
 
-index_csv_path: "/home/ros_catkin_ws/src/integrated_attitude_estimator/index_dict/index_dict_-30_30_range_step1deg.csv"
+index_csv_path: "/home/catkin_ws/src/integrated_attitude_estimator/index_dict/index_dict_-30_30_range_step1deg.csv"
 
 hyperparameters:
   img_size: 224
