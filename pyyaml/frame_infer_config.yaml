@@ -35,7 +35,7 @@ yaml_name: "infer_config_seq4_25hz.yaml"
 
 index_dict_name: "index_dict_-30_30_range_step1deg.csv"
 
-index_csv_path: "/home/catkin_ws/src/integrated_attitude_estimator/index_dict/index_dict_-30_30_range_step1deg.csv"
+index_csv_path: "/home/amsl/catkin_ws/src/integrated_attitude_estimator/index_dict/index_dict_-30_30_range_step1deg.csv"
 
 hyperparameters:
   img_size: 224
