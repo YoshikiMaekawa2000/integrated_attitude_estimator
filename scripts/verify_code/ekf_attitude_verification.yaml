@@ -1,0 +1,19 @@
+infer_log_path: "/media/amsl/96fde31e-3b9b-4160-8d8a-a4b913579ca21/integrated_attitude_estimator_log/ResNet/train_log_resnet50_finetune_2022_12_25_1frame/inference_test_log/ros_log_2023_01_10/"
+
+
+#ALL
+csv_1: "ekf_attitude_estimation_log_seq4_w_DNN_w_velocity_w_angle_w_angle_noise_w_velocity_noise.csv"
+# W/O IMU angle
+csv_2: "ekf_attitude_estimation_log_seq4_w_DNN_w_velocity_wo_angle_w_angle_noise_w_velocity_noise.csv"
+# W/O IMU angle and IMU velocity
+csv_3: "ekf_attitude_estimation_log_seq4_w_DNN_wo_velocity_wo_angle_w_angle_noise_w_velocity_noise.csv"
+# W/O DNN, W IMU
+csv_4: "ekf_attitude_estimation_log_seq4_wo_DNN_w_velocity_w_angle_w_angle_noise_w_velocity_noise.csv"
+
+fig_name: "ekf_attitude_graph_seq4.png"
+
+end_time: 85
+# Seq1: 155
+# Seq2: 285
+# Seq3: 445
+# Seq4: 85

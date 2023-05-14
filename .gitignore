@@ -1,0 +1,4 @@
+*.pth
+*.pyth
+.vscode/
+__pycache__/

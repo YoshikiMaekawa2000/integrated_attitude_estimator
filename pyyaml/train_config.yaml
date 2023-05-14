@@ -1,0 +1,132 @@
+save_top_path: "/home/log/train_log"
+
+pretrained_weights_top_directory: "/home/ros_catkin_ws/src/integrated_attitude_estimator/weights/"
+pretrained_weights_file_name: "weights_2023_02_02_TimeSformer_pretrain_8frame_for_IROS.pth"
+
+# # For SENet
+# resnet101-63fe2227.pth
+# resnet50-0676ba61.pth
+# weights_2022_12_12_resnet50_pretrain_10_epoch_8frame.pth # Train in few epochs and learning rate by AirSim #8Frame
+# weights_2022_12_22_resnet50_pretrain_10_epoch_4frame.pth # Train in few epochs and learning rate by AirSim #4Frame
+# weights_2022_12_26_resnet50_pretrain_10_epoch_2frame.pth # Train in few epochs and learning rate by AirSim #2Frame
+# weights_2022_12_24_resnet50_pretrain_10_epoch_1frame.pth # Train in few epochs and learning rate by AirSim #1Frame
+
+# # For TimeSformer
+# TimeSformer_divST_8x32_224_K600.pyth
+# weights_2023_01_03_TimeSformer_pretrain_4frame.pth
+# weights_2023_01_05_TimeSformer_pretrain_1frame.pth
+# weights_2023_01_05_TimeSformer_pretrain_1frame_8depth.pth
+# weights_2023_01_07_TimeSformer_pretrain_8frame.pth
+
+# For TimeSformer(IROS)
+# weights_2023_02_02_TimeSformer_pretrain_8frame_for_IROS.pth
+
+# For Pretrain
+# train:
+#   - "/home/strage/flight_airsim_image/train_sequence1/degree_0"
+#   - "/home/strage/flight_airsim_image/train_sequence1/degree_5"
+#   - "/home/strage/flight_airsim_image/train_sequence1/degree_10"
+#   - "/home/strage/flight_airsim_image/train_sequence2/degree_0"
+#   - "/home/strage/flight_airsim_image/train_sequence2/degree_5"
+#   - "/home/strage/flight_airsim_image/train_sequence2/degree_10"
+#   - "/home/strage/flight_airsim_image/train_sequence3/degree_0"
+#   - "/home/strage/flight_airsim_image/train_sequence3/degree_5"
+#   - "/home/strage/flight_airsim_image/train_sequence3/degree_10"
+#   - "/home/strage/flight_airsim_image/sequence1"
+#   - "/home/strage/flight_airsim_image/sequence2"
+#   - "/home/strage/flight_airsim_image/sequence3"
+#   - "/home/strage/flight_airsim_image/sequence4"
+#   - "/home/strage/flight_airsim_image/sequence9"
+#   - "/home/strage/flight_airsim_image/sequence10"
+# distort:
+#   - "/home/strage/flight_airsim_image/sequence5"
+# valid:
+#   - "/home/strage/flight_airsim_image/train_sequence4/degree_0"
+#   - "/home/strage/flight_airsim_image/train_sequence4/degree_5"
+#   - "/home/strage/flight_airsim_image/train_sequence4/degree_10"
+#   - "/home/strage/flight_airsim_image/sequence6"
+#   - "/home/strage/flight_airsim_image/sequence7"
+
+# #For Real Env
+train:
+  - "/home/strage/gimbal_attitude_image/25hz/known_env/dji_rs3pro_20221101_131145" # 25hz Train Data
+  - "/home/strage/gimbal_attitude_image/25hz/known_env/dji_rs3pro_20221101_131610"
+  - "/home/strage/gimbal_attitude_image/25hz/known_env/dji_rs3pro_20221101_132306"
+  - "/home/strage/gimbal_attitude_image/25hz/known_env/dji_rs3pro_20221109_114642"
+  - "/home/strage/gimbal_attitude_image/25hz/known_env/dji_rs3pro_20221109_115528"
+  - "/home/strage/gimbal_attitude_image/25hz/known_env/dji_rs3pro_20221109_155909"
+  - "/home/strage/gimbal_attitude_image/25hz/known_env/dji_rs3pro_20221109_160802"
+  - "/home/strage/gimbal_attitude_image/25hz/known_env/dji_rs3pro_20221109_161232"
+  - "/home/strage/gimbal_attitude_image/25hz/known_env/dji_rs3pro_20221114_161633"
+  - "/home/strage/gimbal_attitude_image/25hz/known_env/dji_rs3pro_20221114_162644"
+  - "/home/strage/gimbal_attitude_image/25hz/known_env/dji_rs3pro_20221116_155836"
+  - "/home/strage/gimbal_attitude_image/25hz/known_env/dji_rs3pro_20221116_154646"
+  - "/home/strage/gimbal_attitude_image/25hz/known_env/dji_rs3pro_20230130_161601"
+  - "/home/strage/gimbal_attitude_image/100hz/known_env/dji_rs3pro_20221101_131145" # 100hz Train Data
+  - "/home/strage/gimbal_attitude_image/100hz/known_env/dji_rs3pro_20221101_131610"
+  - "/home/strage/gimbal_attitude_image/100hz/known_env/dji_rs3pro_20221101_132306"
+  - "/home/strage/gimbal_attitude_image/100hz/known_env/dji_rs3pro_20221109_114642"
+  - "/home/strage/gimbal_attitude_image/100hz/known_env/dji_rs3pro_20221109_115528"
+  - "/home/strage/gimbal_attitude_image/100hz/known_env/dji_rs3pro_20221109_155909"
+  - "/home/strage/gimbal_attitude_image/100hz/known_env/dji_rs3pro_20221109_160802"
+  - "/home/strage/gimbal_attitude_image/100hz/known_env/dji_rs3pro_20221109_161232"
+  - "/home/strage/gimbal_attitude_image/100hz/known_env/dji_rs3pro_20221114_161633"
+  - "/home/strage/gimbal_attitude_image/100hz/known_env/dji_rs3pro_20221114_162644"
+  - "/home/strage/gimbal_attitude_image/100hz/known_env/dji_rs3pro_20221116_155836"
+  - "/home/strage/gimbal_attitude_image/100hz/known_env/dji_rs3pro_20221116_154646"
+  - "/home/strage/gimbal_attitude_image/100hz/known_env/dji_rs3pro_20230130_161601"
+distort:
+  - "/home/strage/gimbal_attitude_image/25hz/known_env/dji_rs3pro_20221116_162156" # 25hz Train Data
+  - "/home/strage/gimbal_attitude_image/100hz/known_env/dji_rs3pro_20221116_162156" # 100hz Train Data
+valid:
+  - "/home/strage/gimbal_attitude_image/25hz/known_env/dji_rs3pro_20221114_163059" # 25hz Valid Data
+  - "/home/strage/gimbal_attitude_image/100hz/known_env/dji_rs3pro_20221114_163059" # 100hz Valid Data
+
+train_type: "Gimbal" # AirSim or Gimbal
+train_system: "finetune" # pretrain or finetune
+
+csv_name: "data_list.csv"
+
+index_csv_path: "/home/ros_catkin_ws/src/integrated_attitude_estimator/index_dict/index_dict_-30_30_range_step1deg.csv"
+
+multiGPU: 1 #1 is ture
+
+hyperparameters:
+  img_size: 224
+  transform_params:
+    do_domain_randomization: "train" #train or eval
+    resize: 224 # For ColorGitter
+    brightness: 0.04
+    contrast: 0.04
+    saturation: 0.04
+    hue: 0.15
+    kernel_size: 3 # For Gaussian Blur
+    sigma_min: 0.01
+    sigma_max: 0.5
+    equalize_p: 0.95 # For Random Equalize
+    elastic_alpha: 30.0 # For ElasticTransform
+    distort_epoch: 10 # 2 in pretrain, 10 in finetune and pretrain in TimeSformer
+  network_type: "TimeSformer" # TimeSformer or SENet
+  num_classes: 63
+  num_frames: 8 # 8, 4, 2, 1
+  deg_threshold: 30
+  batch_size: 220 # 160 in TimeSformer(4 frame), 640 in TimeSformer(1 frame), 640 in ResNet50
+  num_epochs: 50 # 10 in pretrain, 200 in finetune(ResNet), 80 in finetune(TimeSformer)
+  optimizer_name: "RAdam"
+  lr_feature: 6e-5 # Pretrain: 1e-6, Finetune: 3e-5
+  lr_fc: 1e-4 # Pretrain: 1e-6, Finetune: 1e-4
+  alpha: 7e-4 # Pretrain: 5e-4, Finetune: 7e-4.
+  num_workers: 35 # num_workers <= 35
+  save_step: 10
+  mean_element: 0.5
+  std_element: 0.5
+  do_white_makeup: False
+  do_white_makeup_from_back: False
+  whiteup_frame: 0
+  timesformer:
+    patch_size: 16
+    attention_type: 'divided_space_time' #
+    depth: 3 #num transforemer layers
+    num_heads: 12
+  senet:
+    resnet_model: "resnet50" # 18 34 50 101 152

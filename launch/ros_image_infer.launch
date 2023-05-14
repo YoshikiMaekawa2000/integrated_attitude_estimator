@@ -1,0 +1,29 @@
+<launch>
+    <!--EDIT ros_infer_config.yaml before start launch-->
+    <arg name="inferenced_angle_topic_name" default="/infer_angle" />
+    <arg name="ground_truth_angle_topic_name" default="/gt_correct_angle" />
+    <arg name="image_topic_name" default="/decompressed_image" />
+    <arg name="absolute_error_dnn_topic_name" default="/absolute_error_dnn" />
+    <arg name="imu_calibrated_angle_topic_name" default="/imu_correct_angle" />
+    <arg name="gimbal_angle_topic_name" default="/gimbal_angle" />
+    <arg name="imu_topic_name" default="/imu/data" />
+    <arg name="ekf_angle_topic_name" default="/ekf_angle" />
+
+    <node pkg="integrated_attitude_estimator" name="ros_image_infer" type="ros_infer.py" output="screen">
+        <param name="/use_sim_time" value="true"/>
+        <param name="inferenced_angle_topic_name" value="$(arg inferenced_angle_topic_name)" />
+        <param name="ground_truth_angle_topic_name" value="$(arg ground_truth_angle_topic_name)" />
+        <param name="absolute_error_topic_name" value="$(arg absolute_error_dnn_topic_name)" />
+        <param name="image_topic_name" value="$(arg image_topic_name)" />
+    </node>
+    <node pkg="integrated_attitude_estimator" name="publish_correct_angle" type="publish_correct_angle.py" output="screen">
+        <param name="/use_sim_time" value="true"/>
+        <param name="imu_calibrated_angle_topic_name" value="$(arg imu_calibrated_angle_topic_name)" />
+        <param name="gimbal_angle_topic_name" value="$(arg gimbal_angle_topic_name)" />
+        <param name="gt_angle_topic_name" value="$(arg ground_truth_angle_topic_name)" />
+    </node>
+    <node name="image_republish" pkg="image_transport" type="republish" args="compressed raw">
+        <remap from="in" to="/camera/color/image_raw" />
+        <remap from="out" to="$(arg image_topic_name)" />
+    </node>
+</launch>

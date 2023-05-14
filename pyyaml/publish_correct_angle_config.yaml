@@ -1,0 +1,4 @@
+# ros_params:
+#   gimbal_angle_topic_name: "/gimbal_angle"
+#   imu_calibrated_angle_topic_name: "/imu_correct_angle"
+#   gt_angle_topic_name: "/gt_correct_angle"

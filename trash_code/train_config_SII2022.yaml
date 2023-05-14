@@ -1,0 +1,51 @@
+save_top_path: "/home/log/train_log"
+save_yaml_name: "train_config_SII2022.yaml"
+
+train:
+  - "/home/strage/flight_airsim_image/train_sequence1/degree_0"
+  - "/home/strage/flight_airsim_image/train_sequence1/degree_5"
+  - "/home/strage/flight_airsim_image/train_sequence1/degree_10"
+  - "/home/strage/flight_airsim_image/train_sequence2/degree_0"
+  - "/home/strage/flight_airsim_image/train_sequence2/degree_5"
+  - "/home/strage/flight_airsim_image/train_sequence2/degree_10"
+  - "/home/strage/flight_airsim_image/train_sequence3/degree_0"
+  - "/home/strage/flight_airsim_image/train_sequence3/degree_5"
+  - "/home/strage/flight_airsim_image/train_sequence3/degree_10"
+  - "/home/strage/flight_airsim_image/sequence1"
+  - "/home/strage/flight_airsim_image/sequence2"
+  - "/home/strage/flight_airsim_image/sequence3"
+  - "/home/strage/flight_airsim_image/sequence4"
+  - "/home/strage/flight_airsim_image/sequence5"
+  - "/home/strage/flight_airsim_image/sequence9"
+  - "/home/strage/flight_airsim_image/sequence10"
+valid:
+  - "/home/strage/flight_airsim_image/sequence6"
+  - "/home/strage/flight_airsim_image/sequence7"
+  - "/home/strage/flight_airsim_image/train_sequence4/degree_0"
+  - "/home/strage/flight_airsim_image/train_sequence4/degree_5"
+  - "/home/strage/flight_airsim_image/train_sequence4/degree_10"
+
+csv_name: "data_list.csv"
+
+index_csv_path: "/home/ros_catkin_ws/src/integrated_attitude_estimator/index_dict/index_dict_-30_30_range_step1deg.csv"
+
+multiGPU: 1 #1 is ture.
+
+hyperparameters:
+  img_size: 224
+  resize: 224
+  num_classes: 63
+  deg_threshold: 30
+  batch_size: 220
+  num_epochs: 80
+  optimizer_name: "RAdam"
+  lr: 1e-5
+  alpha: 1e-6
+  num_workers: 60
+  save_step: 10
+  mean_element: 0.5
+  std_element: 0.5
+  dropout_rate: 0.1
+  do_white_makeup: False
+  do_white_makeup_from_back: False
+  whiteup_frame: 0

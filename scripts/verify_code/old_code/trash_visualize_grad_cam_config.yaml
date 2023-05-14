@@ -1,0 +1,39 @@
+infer_dataset_top_directory:  "/home/strage/gimbal_attitude_image/100hz/known_env/test_image/dji_rs3pro_20221118_145840/" # Sequence1
+  # "/home/strage/gimbal_attitude_image/100hz/known_env/test_image/dji_rs3pro_20221118_145840/" # Sequence1
+  # "/home/strage/gimbal_attitude_image/100hz/known_env/test_image/dji_rs3pro_20221118_150138/" # Sequence2
+  # "/home/strage/gimbal_attitude_image/100hz/unknown_env/faculty_of_agriculture_region/dji_rs3pro_20221116_160432/" # seq3 unknown environment 農学部
+  # "/home/strage/gimbal_attitude_image/100hz/unknown_env/building_d/dji_rs3pro_20221118_150706/" # seq4 unknown environment D館
+
+csv_name: "data_list.csv"
+camera_image_directory: "camera_image"
+image_num: 1000
+image_format: ".png"
+
+weights_top_directory: "/home/strage/integrated_attitude_estimator_log/ResNet/train_log_resnet50_finetune_2022_12_25_1frame/train_log/"
+weights_file_name: "weights.pth"
+
+save_image_top_directory: "/home/strage/integrated_attitude_estimator_log/ResNet/train_log_resnet50_finetune_2022_12_25_1frame/inference_test_log/"
+save_image_file_format: ".png"
+
+index_dict_name: "index_dict_-30_30_range_step1deg.csv"
+index_csv_path: "/home/ros_catkin_ws/src/integrated_attitude_estimator/index_dict/index_dict_-30_30_range_step1deg.csv"
+
+
+hyperparameters:
+  img_size: 224
+  transform_params:
+    do_domain_randomization: "eval" #train or eval
+    resize: 224 # For ColorGitter
+  network_type: "SENet" # TimeSformer or SENet
+  num_classes: 63
+  num_frames: 1 # 8 or 4 or 2 or 1
+  deg_threshold: 30
+  mean_element: 0.5
+  std_element: 0.5
+  timesformer:
+    patch_size: 16
+    attention_type: 'divided_space_time'
+    depth: 3 #num transforemer layers
+    num_heads: 12
+  senet:
+    resnet_model: "resnet50" # 18 34 50 101 152

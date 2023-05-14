@@ -1,0 +1,6 @@
+infer_log_top_path: "/media/amsl/96fde31e-3b9b-4160-8d8a-a4b913579ca21/integrated_attitude_estimator_log/ResNet/train_log_resnet50_finetune_2022_12_18/inference_test_log/"
+infer_log_file_name: "frame_infer_relust_seq1_25hz.csv"
+
+start_seq: 0
+end_seq: 3800
+step_seq: 2

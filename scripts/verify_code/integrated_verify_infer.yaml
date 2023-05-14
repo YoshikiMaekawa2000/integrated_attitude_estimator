@@ -1,0 +1,10 @@
+infer_log_top_path: "/media/amsl/96fde31e-3b9b-4160-8d8a-a4b913579ca21/integrated_attitude_estimator_log/ViT/train_log_TimeSformer_finetune_2023_01_11_8frame/inference_test_log/"
+infer_log_base_name: "frame_infer_relust_seq4_25hz"
+fig_1_name: "_fig1"
+fig_2_name: "_fig2"
+
+start_seq: 0
+step_seq: 1
+
+end_time: 90
+# Seq1: 160, Seq2: 290, Seq3: 450, Seq4: 90

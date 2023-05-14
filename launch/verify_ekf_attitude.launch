@@ -1,0 +1,60 @@
+<launch>
+    <!--EDIT ros_infer_config.yaml before start launch-->
+    <arg name="inferenced_angle_topic_name" default="/infer_angle" />
+    <arg name="ground_truth_angle_topic_name" default="/gt_correct_angle" />
+    <arg name="image_topic_name" default="/decompressed_image" />
+    <arg name="absolute_error_dnn_topic_name" default="/absolute_error_dnn" />
+    <arg name="imu_calibrated_angle_topic_name" default="/imu_correct_angle" />
+    <arg name="gimbal_angle_topic_name" default="/gimbal_angle" />
+    <arg name="imu_topic_name" default="/imu/data" />
+    <arg name="ekf_angle_topic_name" default="/ekf_angle" />
+
+    <!--CSV Params-->
+    <arg name="csv_file_directory" default="/home/strage/integrated_attitude_estimator_log/ResNet/train_log_resnet50_finetune_2022_12_25_1frame/inference_test_log/" />
+    <arg name="csv_file_name" default="ekf_attitude_estimation_log_seq4_wo_DNN_w_velocity_w_angle_w_angle_noise_w_velocity_noise.csv" />
+
+
+    <node pkg="integrated_attitude_estimator" name="ros_image_infer" type="ros_infer.py" output="screen">
+        <param name="/use_sim_time" value="true"/>
+        <param name="inferenced_angle_topic_name" value="$(arg inferenced_angle_topic_name)" />
+        <param name="ground_truth_angle_topic_name" value="$(arg ground_truth_angle_topic_name)" />
+        <param name="absolute_error_topic_name" value="$(arg absolute_error_dnn_topic_name)" />
+        <param name="image_topic_name" value="$(arg image_topic_name)" />
+    </node>
+    <node pkg="integrated_attitude_estimator" name="publish_correct_angle" type="publish_correct_angle.py" output="screen">
+        <param name="/use_sim_time" value="true"/>
+        <param name="imu_calibrated_angle_topic_name" value="$(arg imu_calibrated_angle_topic_name)" />
+        <param name="gimbal_angle_topic_name" value="$(arg gimbal_angle_topic_name)" />
+        <param name="gt_angle_topic_name" value="$(arg ground_truth_angle_topic_name)" />
+    </node>
+    <node name="image_republish" pkg="image_transport" type="republish" args="compressed raw">
+        <remap from="in" to="/camera/color/image_raw" />
+        <remap from="out" to="$(arg image_topic_name)" />
+    </node>
+    <node pkg="integrated_attitude_estimator" name="ekf_attitude_estimator" type="ekf_attitude_estimator" output="screen">
+        <param name="/use_sim_time" value="true"/>
+
+        <param name="use_imu_angle" value="true" type="bool" />
+        <param name="use_imu_velocity" value="true" type="bool" />
+        <param name="use_dnn_angle" value="false" type="bool" />
+
+        <param name="sigma_imu_angle" value="0.01" type="double" />
+        <param name="sigma_imu_velocity" value="0.01" type="double" />
+        <param name="sigma_dnn_angle" value="0.01" type="double" />
+
+        <param name="save_as_csv" value="true" type="bool" />
+
+        <param name="do_randomize_angle" value="true" type="bool" />
+        <param name="do_randomize_velocity" value="true" type="bool" />
+        <param name="standard_deviation_angle" value="0.1" type="double" />
+        <param name="standard_deviation_velocity" value="0.03" type="double" />
+        
+        <param name="csv_file_directory" value="$(arg csv_file_directory)"/>
+        <param name="csv_file_name" value="$(arg csv_file_name)"/>
+        <param name="imu_topic_name" value="$(arg imu_topic_name)" />
+        <param name="dnn_angle_topic_name" value="$(arg inferenced_angle_topic_name)" />
+        <param name="gt_angle_topic_name" value="$(arg ground_truth_angle_topic_name)" />
+        <param name="ekf_angle_topic_name" value="$(arg ekf_angle_topic_name)" />
+    </node>
+
+</launch>

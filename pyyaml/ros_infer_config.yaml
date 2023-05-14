@@ -1,0 +1,34 @@
+weights_top_directory: "/home/strage/integrated_attitude_estimator_log/ResNet/train_log_resnet50_finetune_2022_12_25_1frame/train_log/"
+weights_file_name: "weights.pth"
+
+save_in_csv: False
+infer_log_top_directory: "/home/strage/integrated_attitude_estimator_log/ResNet/train_log_resnet50_finetune_2022_12_25_1frame/inference_test_log/"
+infer_log_file_name: "ros_infer_relust.csv"
+
+yaml_name: "ros_infer_config.yaml"
+
+index_csv_path: "/home/ros_catkin_ws/src/integrated_attitude_estimator/index_dict/index_dict_-30_30_range_step1deg.csv"
+
+# ros_params:
+#   image_topic_name: "/decompressed_image"
+#   gt_angle_topic_name: "/gt_correct_angle"
+#   inferenced_angle_topic_name: "/infer_angle"
+#   absolute_error_topic_name: "/absolute_error_dnn"
+
+hyperparameters:
+  img_size: 224
+  transform_params:
+    resize: 224 # For ColorGitter
+  network_type: "SENet" # TimeSformer or SENet
+  num_classes: 63
+  num_frames: 1
+  deg_threshold: 30
+  mean_element: 0.5
+  std_element: 0.5
+  timesformer:
+    patch_size: 16
+    attention_type: 'divided_space_time'
+    depth: 3 #num transforemer layers
+    num_heads: 12
+  senet:
+    resnet_model: "resnet50" # 18 34 50 101 152
